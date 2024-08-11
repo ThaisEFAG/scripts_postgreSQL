@@ -70,7 +70,16 @@ SELECT
 RIGHT JOIN itens_pedidos t
 ON c.produto_id = t.produto_id;
 
+--UNION para combinar duas consultas: uma que retorna clientes de 'São Paulo' e outra que retorna clientes de 'Rio de Janeiro'
 
+
+
+--lista paginada e ordenada por ordem alfabetica
+ SELECT * 
+	FROM clientes 
+	ORDER BY nome 
+	DESC LIMIT 2 
+	OFFSET 1*3;
 
 -- soma os valores da coluna valor da tabela pedidos
 SELECT SUM(valor) FROM pedidos;
