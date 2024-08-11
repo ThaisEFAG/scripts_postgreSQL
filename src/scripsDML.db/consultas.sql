@@ -70,6 +70,34 @@ SELECT
 RIGHT JOIN itens_pedidos t
 ON c.produto_id = t.produto_id;
 
+--UNION para combinar duas consultas: uma que retorna clientes de 'São Paulo' e outra que retorna clientes de 'Rio de Janeiro'
+
+
+
+--lista paginada e ordenada por ordem alfabetica
+--limit = quantidade de linhas a exibir por resultado
+--offset = quantidade de linhas a serem puladas da tabela/reultado da query antes de iniciar a contagem do limit na página
+----------ex: offset == 2*0 onde 2 é a quantidade de linhas puladas, 0 é a primeira pg, 1 é a segunda pg ...
+----------explicação == página atual: (offset 2 * 0 exibe linhas 1, 2) (calculo: 2*0 = 0 "não há linhas puladas"), linhas da primeira pg: 1, 2.
+-------------------- == página atual: (offset 2 * 1 exibe linhas 3, 4) (calculo: 2*1 = 2 "pula 2 linhas da tabela/resultado"), linhas da segunda pg: 3, 4.
+-------------------- == página atual: (offset 2 * 2 exibe linhas 5, 6) (calculo: 2*2 = 4 "pula 4 linhas da tabela/resultado"), linhas da terceira pg: 5, 6.
+ SELECT * 
+	FROM clientes 
+	ORDER BY nome 
+	DESC LIMIT 2 
+	OFFSET 2*0 ;
+
+--
+SELECT * FROM produtos 
+ORDER BY preco DESC
+LIMIT 3
+OFFSET 3*1 --SEGUNDA PG
+--
+SELECT * FROM produtos
+ORDER BY preco ASC
+LIMIT 2
+OFFSET 2*0 --PRIMEIRA PG
+
 
 
 -- soma os valores da coluna valor da tabela pedidos
