@@ -106,6 +106,7 @@ ORDER BY preco ASC
 OFFSET 2 --lista todos os produtos do preco menor para o maior a partir do terceiro menor preco da tabela
 
 
+
 --between 
 SELECT * FROM usuarios WHERE data_nascimento BETWEEN '2010-01-01' AND now()
 
