@@ -74,12 +74,40 @@ ON c.produto_id = t.produto_id;
 
 
 
---lista paginada e ordenada por ordem alfabetica
+--listas paginadas e ordenadas
+--limit = quantidade de linhas a exibir por resultado
+--offset = quantidade de linhas a serem puladas da tabela/reultado da query antes de iniciar a contagem do limit na página
+----------ex: offset == 2*0 onde 2 é a quantidade de linhas puladas, 0 é a primeira pg, 1 é a segunda pg ...
+----------explicação == página atual: (offset 2 * 0 exibe linhas 1, 2) (calculo: 2*0 = 0 "não há linhas puladas"), linhas da primeira pg: 1, 2.
+-------------------- == página atual: (offset 2 * 1 exibe linhas 3, 4) (calculo: 2*1 = 2 "pula 2 linhas da tabela/resultado"), linhas da segunda pg: 3, 4.
+-------------------- == página atual: (offset 2 * 2 exibe linhas 5, 6) (calculo: 2*2 = 4 "pula 4 linhas da tabela/resultado"), linhas da terceira pg: 5, 6.
  SELECT * 
 	FROM clientes 
 	ORDER BY nome 
 	DESC LIMIT 2 
-	OFFSET 1*3;
+	OFFSET 2*0 ;
+
+--caso não especifique ordenação, o limit traz a listagem por ordem id(ordem de cadastro)
+SELECT * FROM produtos
+LIMIT 5
+--
+SELECT * FROM produtos 
+ORDER BY preco DESC
+LIMIT 3
+OFFSET 3*1 --SEGUNDA PG
+--
+SELECT * FROM produtos
+ORDER BY preco ASC
+LIMIT 2
+OFFSET 2*0 --PRIMEIRA PG
+--
+SELECT * FROM produtos
+ORDER BY preco ASC
+OFFSET 2 --lista todos os produtos do preco menor para o maior a partir do terceiro menor preco da tabela
+
+
+--between 
+SELECT * FROM usuarios WHERE data_nascimento BETWEEN '2010-01-01' AND now()
 
 -- soma os valores da coluna valor da tabela pedidos
 SELECT SUM(valor) FROM pedidos;
