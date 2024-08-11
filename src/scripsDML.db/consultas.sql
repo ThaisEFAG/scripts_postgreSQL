@@ -76,7 +76,7 @@ ON c.produto_id = t.produto_id;
 
 --listas paginadas e ordenadas
 --limit = quantidade de linhas a exibir por resultado
---offset = quantidade de linhas a serem puladas da tabela/reultado da query antes de iniciar a contagem do limit na página
+--offset = quantidade de linhas a serem puladas da tabela/reultado da query antes de iniciar a contagem do limit na página atual
 ----------ex: offset == 2*0 onde 2 é a quantidade de linhas puladas, 0 é a primeira pg, 1 é a segunda pg ...
 ----------explicação == página atual: (offset 2 * 0 exibe linhas 1, 2) (calculo: 2*0 = 0 "não há linhas puladas"), linhas da primeira pg: 1, 2.
 -------------------- == página atual: (offset 2 * 1 exibe linhas 3, 4) (calculo: 2*1 = 2 "pula 2 linhas da tabela/resultado"), linhas da segunda pg: 3, 4.
