@@ -71,7 +71,16 @@ RIGHT JOIN itens_pedidos t
 ON c.produto_id = t.produto_id;
 
 --UNION para combinar duas consultas: uma que retorna clientes de 'São Paulo' e outra que retorna clientes de 'Rio de Janeiro'
-
+SELECT c.nome AS clientes_SP_e_RJ, c.cidade
+	FROM clientes c 
+	WHERE cidade = 'São Paulo'
+UNION
+SELECT c.nome AS clientes_SP_e_RJ, c.cidade
+	FROM clientes c
+	WHERE cidade = 'Rio de Janeiro'
+GROUP BY 
+c.nome,
+c.cidade
 
 
 --listas paginadas e ordenadas
